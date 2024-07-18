@@ -18,7 +18,7 @@ def returnCameraIndexes():
 
 # define a video capture object 
 
-vid = cv2.VideoCapture(4) 
+vid = cv2.VideoCapture(returnCameraIndexes()[0]) 
 
 cascPath = os.getcwd()+'/haarcascades/haarcascade_frontalface_alt2.xml'
 faceCascade = cv2.CascadeClassifier(cascPath)

@@ -1,6 +1,8 @@
 {
     "version": "0.2.0",
     "configurations": [
+
+
         {
             "name": "Python: Current File",
             "type": "debugpy",
@@ -9,7 +11,7 @@
             "console": "integratedTerminal",
             "env": {
             },
-            "python": "/home/parallels/.pytorch_env/env/bin/python"
+            "python": "/home/parallels/.python_env/python_env/bin/python"
         }
     ]
 }
