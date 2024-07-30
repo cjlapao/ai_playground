@@ -1,0 +1,2 @@
+/face_recognition/dataset/**/*
+!/face_recognition/dataset/empty
