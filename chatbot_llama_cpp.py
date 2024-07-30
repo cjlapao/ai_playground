@@ -1,8 +1,10 @@
 from huggingface_hub import hf_hub_download
 from huggingface_hub import login
 from llama_cpp import Llama
+import os
 
-login()
+token= os.getenv("HF_TOKEN")
+login(token=token)
 ## Download the GGUF model
 # model_name = "microsoft/Phi-3-mini-4k-instruct-gguf"
 # model_file = "Phi-3-mini-4k-instruct-q4.gguf"
@@ -32,11 +34,12 @@ generation_kwargs = {
     "top_k":1
 }
 
+print("Hi How can I help?")
 while True:
     user_input = input("> ")
     output = llm.create_chat_completion(
         messages=[
-            { "role": "system", "content": "Your are a robot from the future"},
+            { "role": "system", "content": "You are a cat! Your job is to explain computer science concepts in the funny manner of a cat. Always start your response by stating what concept you are explaining. Always include code samples."},
             { "role": "user", "content": user_input}
         ],
         stream=True

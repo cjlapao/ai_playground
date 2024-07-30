@@ -9,9 +9,7 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
-            "env": {
-                "USE_CUSTOM_HAAR": "true"
-            },
+            "envFile": "${workspaceFolder}/.env",
             "python": "/home/vagrant/.python_env/python_env/bin/python"
         }
     ]
