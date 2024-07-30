@@ -11,16 +11,11 @@ if use_custom_haar is None or use_custom_haar == "false" or use_custom_haar == "
     haarFilename = cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
 else:
     is_custom_haar = True
-    haarFilename = os.getcwd()+'/haarcascades/haarcascade_frontalface_alt2.xml'
+    haarFilename = os.getcwd()+'/face_detection/haarcascades/haarcascade_frontalface_alt2.xml'
 
 faceCascade = cv2.CascadeClassifier(haarFilename)
 
-def detect_faces(cap: cv2.VideoCapture):
-    success, frame = cap.read()
-    if not success:
-        print("Failed to get capture")
-        return None, False
-    
+def detect_faces(frame: any):
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     faces = faceCascade.detectMultiScale(gray, 1.3, 5)
     haarText = "Using default Haar"
@@ -39,4 +34,4 @@ def detect_faces(cap: cv2.VideoCapture):
 			cv2.FONT_HERSHEY_SIMPLEX, 0.45, (255,0 , 0), 1)
         cv2.putText(frame, positionText, (x, y-8),
 			cv2.FONT_HERSHEY_SIMPLEX, 0.45, (0, 255, 0), 1)
-    return frame, success
+    return frame, True

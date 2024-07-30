@@ -1,7 +1,5 @@
 import cv2
 from face_detector import detect_faces
-import cv2 
-import os
   
 def returnCameraIndexes():
     # checks the first 10 indexes.
@@ -26,7 +24,11 @@ camIndex = webcams[0]
 cap = cv2.VideoCapture(camIndex) 
 
 while True:
-    frame, success = detect_faces(cap)
+    cap_success, cap_frame = cap.read()
+    if not cap_success:
+        print("Failed to get capture")
+        break
+    frame, success = detect_faces(cap_frame)
     if not success: continue
 
     cv2.imshow("Face Detection", frame)
@@ -34,3 +36,6 @@ while True:
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
+
+cap.release()
+cv2.destroyAllWindows()
