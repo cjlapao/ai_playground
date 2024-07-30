@@ -10,8 +10,9 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "env": {
+                "USE_CUSTOM_HAAR": "true"
             },
-            "python": "/home/parallels/.python_env/python_env/bin/python"
+            "python": "/home/vagrant/.python_env/python_env/bin/python"
         }
     ]
 }
