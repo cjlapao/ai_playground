@@ -6,21 +6,21 @@ import os
 token= os.getenv("HF_TOKEN")
 login(token=token)
 
-model_name = "reach-vb/Meta-Llama-3.1-8B-Instruct-Q6_K-GGUF"
-model_file = "meta-llama-3.1-8b-instruct-q6_k.gguf"
+model_name = ""
+model_file = ""
 
 model_path = hf_hub_download(model_name, filename=model_file)
 
 llm = Llama(
     model_path=model_path,
-    n_ctx=16000,
-    n_threads=32,
+    n_ctx=8192,
+    n_threads=5,
     n_gpu_layers=0
 )
 
 generation_kwargs = {
     "max_tokens":20000,
-    "stop":["</s>"],
+    "stop":["/quit"],
     "echo":False,
     "top_k":1
 }
@@ -28,6 +28,8 @@ generation_kwargs = {
 print("Hi How can I help?")
 while True:
     user_input = input("> ")
+    if user_input == "/quit":
+        break
     output = llm.create_chat_completion(
         messages=[
             { "role": "system", "content": "You are a cat! Your job is to explain computer science concepts in the funny manner of a cat. Always start your response by stating what concept you are explaining. Always include code samples."},
@@ -43,3 +45,5 @@ while True:
             print(delta["content"], end='')
     # res = llm(user_input, **generation_kwargs) # Res is a dictionary
     # print(res["choices"][0]["text"])
+
+print("Exited")

@@ -2,3 +2,4 @@
 !/face_recognition/dataset/empty
 .env
 /output
+__pycache__
