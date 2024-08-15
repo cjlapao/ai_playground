@@ -1,12 +1,17 @@
 # pip install accelerate
 import torch
+from huggingface_hub import login
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
+import os
+
+token= os.getenv("HF_TOKEN")
+login(token=token)
 
 # model = "HuggingFaceTB/SmolLM-1.7B"
 # model = "microsoft/Phi-3-mini-4k-instruct"
 # model = "gokuls/BERT-tiny-emotion-intent"
 # model = "TheBloke/Llama-2-7B-Chat-GGUF"
-model = "TheBloke/OpenHermes-2.5-Mistral-7B-GPTQ"
+model = "google/gemma-2-2b"
 device = "cpu"
 
 quantization_config = BitsAndBytesConfig(load_in_8bit=True)

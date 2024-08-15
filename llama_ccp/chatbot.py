@@ -6,8 +6,8 @@ import os
 token= os.getenv("HF_TOKEN")
 login(token=token)
 
-model_name = ""
-model_file = ""
+model_name = "google/gemma-2-2b"
+model_file = "meta-llama-3.1-8b-instruct-q6_k.gguf"
 
 model_path = hf_hub_download(model_name, filename=model_file)
 
