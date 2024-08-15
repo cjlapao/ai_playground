@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "face_detection"
+		},
+		{
+			"path": "face_recognition"
+		},
+		{
+			"path": "llama_ccp"
+		},
+		{
+			"path": "transformers"
+		}
+	]
+}
